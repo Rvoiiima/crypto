@@ -1,0 +1,22 @@
+from Crypto.Util.number import *
+def egcd(a, b):
+    if a == 0:
+        return (b, 0, 1)
+    else:
+        g, x, y = egcd(b % a, a)
+        return (g, y - (b // a) * x, x)
+
+modulus = "A25F8E22F342009C0A52E3BEA4D40EBD0E67292A01E7A26AD6A98AFB3C899D95B3848EE4E0FDFD0662B7E8B29E98F9C2DBCA2EA00488F0C6783492E0BD52D6FA6BB2F192A4B7582276FBF0352A17B61845D5E0AD95F9C91C39766CA57E59AF6407EA44592085A791F98738111F7CCB9B02135BE433A3CFA0397F9B84F96D8A25"
+
+e = 3
+
+N = int(modulus, 16)
+print "N:", N
+
+
+encrypted = "79bf9a5d773b36392a52907bda03d60ba7d52db2abe61afe7c3edcb917f04e8a17781e478c5435164f61187de59bf17a9c01cdf431719b16b6d7dac4b06d75ee75cffeaf9553974ef4931ee0c81b22f90d13e9e6fd16039a5138690cbc717cfbdf11c7af771a898e24b20dc7877aa1213971ea8635c5d7193454cd5a1444afbf"
+
+encrypted = int(encrypted, 16)
+
+text = pow(encrypted, e, N)
+print long_to_bytes(text)

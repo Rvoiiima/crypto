@@ -1,0 +1,2 @@
+strength
+We've captured the flag encrypted several times... do you think you can recover it?
